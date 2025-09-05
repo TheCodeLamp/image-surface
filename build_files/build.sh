@@ -29,6 +29,11 @@ echo "::group:: Install Misc"
 /ctx/install-stage-misc.sh
 echo "::endgroup::"
 
+## Generate initramfs
+echo "::group:: Generate initramfs"
+/ctx/generate-initramfs.sh
+echo "::endgroup::"
+
 # Cleanup
 echo "::group:: Cleanup"
 /ctx/clean.sh
