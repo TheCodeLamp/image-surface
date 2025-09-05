@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ouex pipefail
+set -oue pipefail
 
 # Update
 echo "::group:: Update"
@@ -38,4 +38,3 @@ echo "::endgroup::"
 echo "::group:: Cleanup"
 /ctx/clean.sh
 echo "::endgroup::"
-
