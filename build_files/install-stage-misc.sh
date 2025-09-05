@@ -8,3 +8,4 @@ helix \
 snapper \
 wl-clipboard \
 zoxide \
+fish \
