@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ouex pipefail
+set -oue pipefail
 
 # Update
 echo "::group:: Update"
@@ -27,6 +27,11 @@ echo "::endgroup::"
 ## Install Nushell
 echo "::group:: Install Nushell"
 /ctx/install-stage-nushell.sh
+echo "::endgroup::"
+
+## Install LibreWolf
+echo "::group:: Install LibreWolf"
+/ctx/install-stage-librewolf.sh
 echo "::endgroup::"
 
 ## Install Misc

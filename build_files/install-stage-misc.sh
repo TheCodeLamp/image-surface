@@ -2,4 +2,10 @@
 
 set -ouex pipefail
 
-dnf install --assumeyes alacritty helix snapper wl-clipboard zoxide
+dnf install --assumeyes \
+alacritty \
+helix \
+snapper \
+wl-clipboard \
+zoxide \
+fish \
