@@ -2,23 +2,29 @@
 
 set -ouex pipefail
 
-### Install packages
+# ------ Pre-Install ------
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+dnf upgrade --assumeyes
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+# ------ Install Packages ------
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+# Install Misc Files
 
-#### Example for enabling a System Unit File
+dnf install --assumeyes alacritty helix snapper wl-clipboard zoxide
 
-systemctl enable podman.socket
+# Install Mullvad
+
+dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
+mkdir -p '/var/opt/Mullvad VPN'
+dnf install --assumeyes mullvad-vpn
+
+# Install nushell
+
+dnf install --assumeyes nu
+printf '/bin/nu\n/usr/bin/nu' >> /etc/shells
+
+# ------ Post-Install ------
+
+dnf upgrade --assumeyes
+dnf autoremove --assumeyes
+dnf clean all
