@@ -7,6 +7,11 @@ echo "::group:: Update"
 /ctx/update-stage.sh
 echo "::endgroup::"
 
+# Install Surface Kernel
+echo "::group:: Install Surface Kernel"
+/ctx/install-stage-surface-kernel.sh
+echo "::endgroup::"
+
 # Install Packages
 
 ## Install Mullvad

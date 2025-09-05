@@ -2,7 +2,7 @@
 
 set -eoux pipefail
 
-KERNEL_VERSION="$(rpm -q --queryformat="%{evr}.%{arch}" kernel-core)"
+KERNEL_VERSION="$(rpm -q --queryformat="%{evr}.%{arch}" kernel-surface)"
 
 # Ensure Initramfs is generated
 export DRACUT_NO_XATTR=1
