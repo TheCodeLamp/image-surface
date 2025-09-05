@@ -2,29 +2,35 @@
 
 set -ouex pipefail
 
-# ------ Pre-Install ------
+# Update
+echo "::group:: Update"
+/ctx/update-stage.sh
+echo "::endgroup::"
 
-dnf upgrade --assumeyes
+# Install Packages
 
-# ------ Install Packages ------
+## Install Mullvad
+echo "::group:: Install Mullvad"
+/ctx/install-stage-mullvad.sh
+echo "::endgroup::"
 
-# Install Misc Files
+## Install Megasync
+echo "::group:: Install Megasync"
+/ctx/install-stage-megasync.sh
+echo "::endgroup::"
 
-dnf install --assumeyes alacritty helix snapper wl-clipboard zoxide
+## Install Nushell
+echo "::group:: Install Nushell"
+/ctx/install-stage-nushell.sh
+echo "::endgroup::"
 
-# Install Mullvad
+## Install Misc
+echo "::group:: Install Misc"
+/ctx/install-stage-misc.sh
+echo "::endgroup::"
 
-dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
-mkdir -p '/var/opt/Mullvad VPN'
-dnf install --assumeyes mullvad-vpn
+# Cleanup
+echo "::group:: Cleanup"
+/ctx/clean.sh
+echo "::endgroup::"
 
-# Install nushell
-
-dnf install --assumeyes nu
-printf '/bin/nu\n/usr/bin/nu' >> /etc/shells
-
-# ------ Post-Install ------
-
-dnf upgrade --assumeyes
-dnf autoremove --assumeyes
-dnf clean all
