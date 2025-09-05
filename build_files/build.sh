@@ -24,6 +24,11 @@ echo "::group:: Install Nushell"
 /ctx/install-stage-nushell.sh
 echo "::endgroup::"
 
+## Install LibreWolf
+echo "::group:: Install LibreWolf"
+/ctx/install-stage-librewolf.sh
+echo "::endgroup::"
+
 ## Install Misc
 echo "::group:: Install Misc"
 /ctx/install-stage-misc.sh
@@ -38,3 +43,4 @@ echo "::endgroup::"
 echo "::group:: Cleanup"
 /ctx/clean.sh
 echo "::endgroup::"
+
