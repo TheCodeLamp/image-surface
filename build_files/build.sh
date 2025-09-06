@@ -39,6 +39,11 @@ echo "::group:: Install Misc"
 /ctx/install-stage-misc.sh
 echo "::endgroup::"
 
+## Install Fonts
+echo "::group:: Install Fonts"
+/ctx/install-stage-fonts.sh
+echo "::endgroup::"
+
 # Generate initramfs
 echo "::group:: Generate initramfs"
 /ctx/generate-initramfs.sh
