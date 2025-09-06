@@ -2,7 +2,10 @@
 
 set -eoux pipefail
 
-mkdir -p /usr/local/share/fonts
-curl -L -o /tmp/RobotoMono.zip "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/RobotoMono.zip"
-unzip -o -d /usr/local/share/fonts/RobotoMono /tmp/RobotoMono.zip
-rm /tmp/RobotoMono.zip
+FILE="/tmp/RobotoMono.zip"
+FONTS_FOLDER="/usr/share/fonts"
+
+mkdir -p $FONTS_FOLDER
+curl -L -o $FILE "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/RobotoMono.zip"
+unzip -o -d $"$FONTS_FOLDER/RobotoMono" $FILE
+rm $FILE
