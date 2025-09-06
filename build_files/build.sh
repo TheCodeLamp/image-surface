@@ -7,6 +7,11 @@ echo "::group:: Update"
 /ctx/update-stage.sh
 echo "::endgroup::"
 
+# Remove packages
+echo "::group:: Remove packages"
+/ctx/remove-packages.sh
+echo "::endgroup::"
+
 # Install Packages
 
 ## Install Mullvad
@@ -32,11 +37,6 @@ echo "::endgroup::"
 ## Install Misc
 echo "::group:: Install Misc"
 /ctx/install-stage-misc.sh
-echo "::endgroup::"
-
-# Remove packages
-echo "::group:: Remove packages"
-/ctx/remove-packages.sh
 echo "::endgroup::"
 
 # Generate initramfs
