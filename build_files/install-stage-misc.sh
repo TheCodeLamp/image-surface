@@ -10,3 +10,4 @@ wl-clipboard \
 zoxide \
 fish \
 vlc \
+bat \
