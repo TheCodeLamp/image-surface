@@ -9,3 +9,4 @@ snapper \
 wl-clipboard \
 zoxide \
 fish \
+vlc \
