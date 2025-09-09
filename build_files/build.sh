@@ -14,6 +14,11 @@ echo "::endgroup::"
 
 # Install Packages
 
+# Install Kernel
+echo "::group:: Install Surface Kernel"
+/ctx/install-stage-surface-kernel.sh
+echo "::endgroup::"
+
 ## Install Mullvad
 echo "::group:: Install Mullvad"
 /ctx/main-repo/build_files/install-stage-mullvad.sh
@@ -51,7 +56,7 @@ echo "::endgroup::"
 
 # Generate initramfs
 echo "::group:: Generate initramfs"
-/ctx/main-repo/build_files/generate-initramfs.sh
+/ctx/generate-initramfs.sh
 echo "::endgroup::"
 
 # Cleanup
