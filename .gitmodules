@@ -1,0 +1,3 @@
+[submodule "build_files/main-repo"]
+	path = build_files/main-repo
+	url = https://github.com/TheCodeLamp/image-main.git
