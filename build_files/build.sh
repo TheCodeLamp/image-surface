@@ -1,24 +1,61 @@
 #!/bin/bash
 
-set -ouex pipefail
+set -oue pipefail
 
-### Install packages
+# Update
+echo "::group:: Update"
+/ctx/main-repo/build_files/update-stage.sh
+echo "::endgroup::"
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# Remove packages
+echo "::group:: Remove packages"
+/ctx/main-repo/build_files/remove-packages.sh
+echo "::endgroup::"
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+# Install Packages
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+## Install Mullvad
+echo "::group:: Install Mullvad"
+/ctx/main-repo/build_files/install-stage-mullvad.sh
+echo "::endgroup::"
 
-#### Example for enabling a System Unit File
+## Install Megasync
+echo "::group:: Install Megasync"
+/ctx/main-repo/build_files/install-stage-megasync.sh
+echo "::endgroup::"
 
-systemctl enable podman.socket
+## Install Nushell
+echo "::group:: Install Nushell"
+/ctx/main-repo/build_files/install-stage-nushell.sh
+echo "::endgroup::"
+
+## Install LibreWolf
+echo "::group:: Install LibreWolf"
+/ctx/main-repo/build_files/install-stage-librewolf.sh
+echo "::endgroup::"
+
+## Install FirefoxPWA
+echo "::group:: Install FirefoxPWA"
+/ctx/main-repo/build_files/install-stage-PWAsForFirefox.sh
+echo "::endgroup::"
+
+## Install Misc
+echo "::group:: Install Misc"
+/ctx/main-repo/build_files/install-stage-misc.sh
+echo "::endgroup::"
+
+## Install Fonts
+echo "::group:: Install Fonts"
+/ctx/main-repo/build_files/install-stage-fonts.sh
+echo "::endgroup::"
+
+# Generate initramfs
+echo "::group:: Generate initramfs"
+/ctx/main-repo/build_files/generate-initramfs.sh
+echo "::endgroup::"
+
+# Cleanup
+echo "::group:: Cleanup"
+/ctx/main-repo/build_files/clean.sh
+echo "::endgroup::"
+
