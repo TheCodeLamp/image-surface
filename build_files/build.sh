@@ -31,6 +31,6 @@ echo "::endgroup::"
 
 # Cleanup
 echo "::group:: Cleanup"
-./main-repo/build_files/clean.sh
+./main-repo/build_files/cleanup-stage.sh
 echo "::endgroup::"
 
