@@ -14,6 +14,11 @@ echo "::group:: Remove packages"
 ./main-repo/build_files/remove-packages.sh
 echo "::endgroup::"
 
+# Enable RPM Fusion
+echo "::group:: Enable RPM Fusion"
+./main-repo/build_files/enable-rpmfusion.sh
+echo "::endgroup::"
+
 # Install Kernel
 echo "::group:: Install Surface Kernel"
 ./install-stage-surface-kernel.sh
